@@ -3,6 +3,7 @@
 #include "miniaudio.h"
 #include <iostream>
 #include <string>
+#include <cstdlib>
 using namespace cv;
 using namespace std;
 int main() {
@@ -18,7 +19,7 @@ int main() {
     Mat img8 = imread("8.JPG");
     Mat img9 = imread("9.JPG");
     Mat img10 = imread("10.jpeg");
-     Mat img11 = imread("11.jpeg");
+    Mat img11 = imread("11.jpeg");
     Mat  img12 = imread("12.jpeg");
     Mat img13 = imread("13.JPG");
        Mat img14 = imread("tacoTuesday.jpeg");
@@ -46,21 +47,10 @@ int main() {
     imshow("bum",img69);
      waitKey(0);
     }
-    ma_engine_uninit(&soundThingy);      
-    ma_engine_init(NULL, &soundThingy);  
-     ma_engine_play_sound(&soundThingy, "gizmoedit2.mp3", NULL); 
-    destroyAllWindows(); 
-     VideoCapture editVro("gizmoedit.mp4"); 
-      namedWindow("gizmoEditMoment", WINDOW_AUTOSIZE);
-    Mat frame;
-    while (true) {
-        editVro >> frame; 
-        if (frame.empty()) break;
-        imshow("gizmoEditMoment", frame);
-        if (waitKey(60) == 27) break; 
-    }
-    editVro.release();
+    ma_engine_uninit(&soundThingy);    
+    string filePath = "gizmoedit.mp4";
+    string command = "open " + filePath;
+    int result = system(command.c_str());
     destroyAllWindows();
-  ma_engine_uninit(&soundThingy); 
     return 0;
 }
